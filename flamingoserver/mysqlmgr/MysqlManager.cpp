@@ -307,10 +307,9 @@ bool CMysqlManager::createTable(const STableInfo& table)
     std::stringstream ss;
 	ss << "CREATE TABLE IF NOT EXISTS " << table.m_strName << " (";
 	
-	for (std::map<std::string, STableField>::const_iterator it = table.m_mapField.begin();
-		it != table.m_mapField.end(); ++it)
+	for (auto it = table.m_mapField.cbegin(); it != table.m_mapField.cend(); ++it)
 	{
-		if (it != table.m_mapField.begin())
+		if (it != table.m_mapField.cbegin())
 		{
 			ss << ", ";
 		}
